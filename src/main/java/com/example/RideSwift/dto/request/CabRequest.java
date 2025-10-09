@@ -17,5 +17,5 @@ public class CabRequest {
     String carModel;
     CarType carType;
     int noOfSeats;
-    double farePerks;
+    double farePerkm;
 }

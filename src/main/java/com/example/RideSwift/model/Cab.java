@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Cab {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +24,7 @@ public class Cab {
     @Enumerated(EnumType.STRING)
     CarType carType;
     int noOfSeats;
-    double farePerks;
+    double farePerkm;
     @OneToOne
             @JoinColumn(name = "driver_id")
     Driver driver;

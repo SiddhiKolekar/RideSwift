@@ -14,5 +14,5 @@ public class DriverRequest {
     int age;
     int panNumber;
     String mobNo;
-    CabRequest cabRequest;
+    CabRequest cab;
 }

@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/customer")
 public class CustomerController {
-    @Autowired
-    CustomerService customerService;
+//    @Autowired
+  //  CustomerService customerService //field injection
+    private final CustomerService customerService;
+    //constructor injection
+    public CustomerController(CustomerService customerService){
+        this.customerService = customerService;
+    }
     @PostMapping
     public ResponseEntity<CustomerResponse> addCustomer(@RequestBody CustomerRequest customerRequest){
         CustomerResponse response = customerService.addCustomer(customerRequest);
