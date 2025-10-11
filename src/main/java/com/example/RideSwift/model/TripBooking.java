@@ -18,6 +18,7 @@ public class TripBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
+    String bookingId; //UUID
     String source;
     String destination;
     double tripDistanceInKm;

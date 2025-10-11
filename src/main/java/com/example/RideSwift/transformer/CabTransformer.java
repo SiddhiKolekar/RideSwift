@@ -12,6 +12,7 @@ public class CabTransformer {
                 .farePerkm(cabRequest.getFarePerkm())
                 .noOfSeats(cabRequest.getNoOfSeats())
                 .carType(cabRequest.getCarType())
+                .available(true)
                 .build();
     }
 }

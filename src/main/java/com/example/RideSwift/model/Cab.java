@@ -16,11 +16,10 @@ public class Cab {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
-    String company;
     @Column(unique = true, nullable = false)
     String cabNo;
     String carModel;
+    boolean available;
     @Enumerated(EnumType.STRING)
     CarType carType;
     int noOfSeats;
