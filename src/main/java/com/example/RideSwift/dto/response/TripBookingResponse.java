@@ -11,6 +11,7 @@ import java.util.Date;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class TripBookingResponse {
     String bookingId;
     String source;

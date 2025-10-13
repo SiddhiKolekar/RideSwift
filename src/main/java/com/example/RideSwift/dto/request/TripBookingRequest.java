@@ -10,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TripBookingRequest {
-    String source;
+    String pickup;
     String destination;
     double tripDistanceInKm;
     double totalFare;
