@@ -1,12 +1,12 @@
 package com.example.RideSwift.transformer;
 
 import com.example.RideSwift.dto.request.CabRequest;
+import com.example.RideSwift.dto.response.CabResponse;
 import com.example.RideSwift.model.Cab;
 
 public class CabTransformer {
     public static Cab cabRequestToCab(CabRequest cabRequest){
         return Cab.builder()
-                .company(cabRequest.getCompany())
                 .cabNo(cabRequest.getCabNo())
                 .carModel(cabRequest.getCarModel())
                 .farePerkm(cabRequest.getFarePerkm())
@@ -15,4 +15,13 @@ public class CabTransformer {
                 .available(true)
                 .build();
     }
+
+    public static CabResponse cabToCabResponse(Cab cab){
+        return CabResponse.builder()
+                .cabNo(cab.getCabNo())
+                .carModel(cab.getCarModel())
+                .farePerkm(cab.getFarePerkm())
+                .build();
+    }
+
 }

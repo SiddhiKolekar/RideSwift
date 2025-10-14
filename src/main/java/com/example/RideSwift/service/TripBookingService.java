@@ -25,7 +25,7 @@ public class TripBookingService {
     public TripBookingResponse bookCab(boolean applyCoupon, TripBookingRequest tripBookingRequest) {
         //validate email id of the customer
         Customer customer = customerRepository.findByEmailId(tripBookingRequest.getCustomerEmailId());
-        if(customer.equals(null)){
+        if(customer == null){
             throw new CustomerNotFoundException("Invalid email id");
         }
 
@@ -53,6 +53,6 @@ public class TripBookingService {
         driverRepository.save(cab.getDriver()); //driver + cab + savedBooking
 
         //prepare booking response
-
+        return BookingTransformer.tripBookingToTripBookingResponse(savedTripBooking);
     }
 }

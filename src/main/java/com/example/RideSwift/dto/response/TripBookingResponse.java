@@ -14,6 +14,7 @@ import java.util.Date;
 @Builder
 public class TripBookingResponse {
     String bookingId;
+    String pickup;
     String source;
     String destination;
     double tripDistanceInKm;
