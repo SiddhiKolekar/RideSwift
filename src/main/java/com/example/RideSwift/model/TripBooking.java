@@ -17,8 +17,8 @@ import java.util.Date;
 @Builder
 public class TripBooking {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
     String bookingId; //UUID
     String pickup;
     String destination;

@@ -21,7 +21,7 @@ public class Driver {
     int id;
     String name;
     int age;
-    int panNumber;
+    String panNumber;
     @Column(unique = true, nullable = false)
     String mobNo;
     double rating;

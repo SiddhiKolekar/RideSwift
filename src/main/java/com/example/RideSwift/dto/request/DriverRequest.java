@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 public class DriverRequest {
     String name;
     int age;
-    int panNumber;
+    String panNumber;
     String mobNo;
     CabRequest cab;
 }

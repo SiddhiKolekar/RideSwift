@@ -12,8 +12,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CabRequest {
     String company;
-    String cabNo;
     String carModel;
+    String cabNo;
     CarType carType;
     int noOfSeats;
     double farePerkm;
