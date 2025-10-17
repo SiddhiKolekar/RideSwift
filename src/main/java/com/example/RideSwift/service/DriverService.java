@@ -34,5 +34,9 @@ public class DriverService {
         return "Driver and cab saved successfully";
     }
 
+    public Driver getDriver(String mobNo) {
+        return driverRepository.findByMobNo(mobNo);
+    }
+
     //delete a driver by mobNo (don't manually get the cab)
 }

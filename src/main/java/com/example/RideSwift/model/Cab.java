@@ -1,6 +1,7 @@
 package com.example.RideSwift.model;
 
 import com.example.RideSwift.Enum.CarType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -26,5 +27,6 @@ public class Cab {
     double farePerkm;
     @OneToOne
             @JoinColumn(name = "driver_id")
+            @JsonIgnore
     Driver driver;
 }

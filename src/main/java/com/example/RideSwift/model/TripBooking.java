@@ -1,6 +1,7 @@
 package com.example.RideSwift.model;
 
 import com.example.RideSwift.Enum.TripStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -32,5 +33,6 @@ public class TripBooking {
     Customer customer;
     @ManyToOne
     @JoinColumn
+            @JsonIgnore
     Driver driver;
 }

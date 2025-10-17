@@ -23,4 +23,5 @@ public class TripBookingResponse {
     Date bookedAt;
     CustomerResponse customerResponse;
     DriverResponse driverResponse;
+    String message;
 }

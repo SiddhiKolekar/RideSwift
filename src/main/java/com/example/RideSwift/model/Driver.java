@@ -1,6 +1,7 @@
 package com.example.RideSwift.model;
 
 import com.example.RideSwift.Enum.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -26,6 +27,7 @@ public class Driver {
     String mobNo;
     double rating;
     @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
+            @JsonIgnore
     Cab cab;
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
     List<TripBooking> bookings = new ArrayList<>();
