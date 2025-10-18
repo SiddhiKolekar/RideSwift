@@ -12,7 +12,9 @@ import com.example.RideSwift.repository.DriverRepository;
 import com.example.RideSwift.repository.TripBookingRepository;
 import com.example.RideSwift.transformer.BookingTransformer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.CannotAcquireLockException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +24,8 @@ public class TripBookingService {
     private final CabRepository cabRepository;
     private final DriverRepository driverRepository;
     private final TripBookingRepository tripBookingRepository;
+    @Autowired
+    JavaMailSender javaMailSender;
     public TripBookingResponse bookCab(boolean applyCoupon, TripBookingRequest tripBookingRequest) {
         //validate email id of the customer
         Customer customer = customerRepository.findByEmailId(tripBookingRequest.getCustomerEmailId());
@@ -52,7 +56,23 @@ public class TripBookingService {
         customerRepository.save(customer); //customer and savedBooking
         driverRepository.save(cab.getDriver()); //driver + cab + savedBooking
 
-        //prepare booking response
+        sendEmail(savedTripBooking);
+
+        //last step -> prepare booking response
         return BookingTransformer.tripBookingToTripBookingResponse(savedTripBooking);
+    }
+
+    private void sendEmail(TripBooking savedTripBooking) {
+        //prepare your email
+        String text = "Congrats !! " + savedTripBooking.getCustomer().getName()
+                + " your ride is booked with " + savedTripBooking.getDriver().getName();
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom("siddhikolekar11@gmail.com");
+        simpleMailMessage.setTo(savedTripBooking.getCustomer().getEmailId());
+        simpleMailMessage.setSubject("Cab Booked !");
+        simpleMailMessage.setText(text);
+
+        //send the mail
+        javaMailSender.send(simpleMailMessage);
     }
 }
